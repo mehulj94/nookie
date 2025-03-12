@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Nookie",
+  "version": "1.0",
+  "description": "Clears all cookies from the current website with one click",
+  "icons": {
+    "48": "icon/nookie-48.png"
+  },
+  "permissions": [
+    "cookies",
+    "<all_urls>",
+    "tabs"
+  ],
+  "browser_action": {
+    "default_icon": {
+      "48": "icon/nookie-48.png"
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+}
