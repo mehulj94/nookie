@@ -1,12 +1,13 @@
 # Nookie 🍪
 
-A simple Firefox extension that clears all cookies from the current website with a single click.
+A simple Firefox extension that clears all cookies and localStorage from the current website with a single click.
 
 ## Features
 
-- Clear all cookies for the current website instantly by clicking the extension icon
-- Automatically reloads the page after clearing cookies
+- Clear all cookies and localStorage for the current website instantly by clicking the extension icon
+- Automatically reloads the page after clearing data
 - No popup interface - just one click and done
+- Console feedback showing number of cookies and localStorage items cleared
 
 ## Installation
 
@@ -19,7 +20,7 @@ A simple Firefox extension that clears all cookies from the current website with
 ## Usage
 
 1. Click the Nookie icon (🍪) in your browser toolbar while on any website
-2. All cookies for that domain will be instantly cleared
+2. All cookies and localStorage data for that domain will be instantly cleared
 3. The page will automatically reload with fresh state
 
 ## Permissions
@@ -29,13 +30,14 @@ The extension requires the following permissions:
 - `cookies`: To read and remove cookies from websites
 - `<all_urls>`: To access cookie information across all websites
 - `tabs`: To get the current tab URL and reload the page
+- `activeTab`: To execute scripts for clearing localStorage
 
 ## Development
 
 The extension consists of three main files:
 
 - `manifest.json`: Extension configuration and permissions
-- `background.js`: Core logic for cookie deletion
+- `background.js`: Core logic for cookie and localStorage deletion
 - `icon/`: Directory containing extension icons
 
 ## Contributing

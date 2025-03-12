@@ -14,12 +14,8 @@ browser.browserAction.onClicked.addListener(async (tab) => {
         
         console.log('Found cookies:', cookies);
         
-        if (cookies.length === 0) {
-            console.log('No cookies found');
-            return;
-        }
-
-        let count = 0;
+        // Clear cookies
+        let cookieCount = 0;
         for (const cookie of cookies) {
             // Create proper URL for cookie removal
             const cookieUrl = `${url.protocol}//${cookie.domain}${cookie.path}`;
@@ -29,10 +25,21 @@ browser.browserAction.onClicked.addListener(async (tab) => {
                 url: cookieUrl
             });
             
-            count++;
+            cookieCount++;
         }
 
-        console.log(`Successfully removed ${count} cookies`);
+        console.log(`Successfully removed ${cookieCount} cookies`);
+
+        // Clear localStorage
+        const clearStorageScript = `
+            const storageSize = localStorage.length;
+            localStorage.clear();
+            console.log('Cleared localStorage items:', storageSize);
+        `;
+
+        await browser.tabs.executeScript(tab.id, {
+            code: clearStorageScript
+        });
         
         // Reload the page
         await browser.tabs.reload(tab.id);
